@@ -4,53 +4,77 @@
 
 **Where should the business focus its efforts to increase revenue while protecting profitability?**
 
-This project analyzes Superstore sales, profitability, customers, products, discounts, regions, segments, and returns to identify the drivers of profitable growth and areas of profit leakage.
+This analysis looks beyond sales growth to understand where revenue is translating into profit and where the business is losing value through low-margin products, discounting, and unprofitable customer relationships.
 
 ---
 
-## Project Overview
+## What I Analyzed
 
-The analysis follows an end-to-end business analytics workflow:
+The analysis covers:
 
-**Business Question → Data Preparation → Exploration → Profitability Analysis → Risk Identification → Recommendations**
+- Sales and profit growth over time
+- Category and subcategory profitability
+- Regional and state-level performance
+- Discounting and profit leakage
+- Customer-level profitability
+- Loss-making products
+- Returns
 
-Three tools were used for different analytical purposes:
+I used **Excel, Python, and Power BI**, with each tool serving a different purpose rather than repeating the same analysis across all three.
 
-- **Excel** — structured business performance analysis and drill-down
-- **Python** — deeper customer, product, growth, and discount-risk analysis
-- **Power BI** — management-facing dashboard for monitoring performance and priorities
+### Tools
 
----
+**Excel**
+- Overall business performance
+- Category, region, segment and subcategory analysis
+- Discount analysis
+- Product profitability
+- Returns analysis
 
-## Dataset
+**Python**
+- Growth decomposition
+- Customer profitability risk
+- Product-level loss analysis
+- High-discount profitability analysis
 
-The project uses the Tableau Sample Superstore dataset.
-
-### Core data
-
-- 10,194 transaction records
-- 5,111 unique orders
-- 804 unique customers
-- 2023–2026 analysis period
-
-Supporting data includes regional manager information and return records.
-
----
-
-## Key Business Findings
-
-### 1. Revenue growth accelerated after 2024
-
-Sales declined **4.26% in 2024**, followed by:
-
-- **+29.80% in 2025**
-- **+21.44% in 2026**
-
-Profit also increased during the growth period, although profit growth slowed to **16.04% in 2026** from **33.29% in 2025**.
+**Power BI**
+- Executive dashboard
+- KPI monitoring
+- Growth and profitability visualization
+- Customer and subcategory risk views
 
 ---
 
-### 2. Technology and Office Supplies generate stronger margins
+## Business Snapshot
+
+| Metric | Result |
+|---|---:|
+| Sales | **$2.33M** |
+| Profit | **$292.30K** |
+| Profit Margin | **12.56%** |
+| Orders | **5,111** |
+| Customers | **804** |
+
+The dataset contains **10,194 transaction records** covering 2023–2026.
+
+---
+
+## Key Findings
+
+### Sales growth accelerated after 2024
+
+Sales declined **4.26% in 2024**, before increasing:
+
+- **29.80% in 2025**
+- **21.44% in 2026**
+
+Profit also increased during this period, although profit growth slowed from **33.29% in 2025 to 16.04% in 2026**.
+
+This made profitability an important part of evaluating the quality of the recent sales growth.
+
+---
+
+### Furniture generates revenue but weak profit
 
 | Category | Sales | Profit | Margin |
 |---|---:|---:|---:|
@@ -58,56 +82,58 @@ Profit also increased during the growth period, although profit growth slowed to
 | Office Supplies | $731.89K | $126.02K | 17.22% |
 | Furniture | $754.75K | $19.73K | 2.61% |
 
-Furniture generates substantial revenue but significantly weaker profitability.
+Furniture accounts for significant sales but produces a much lower margin than Technology and Office Supplies.
 
 ---
 
-### 3. Tables are a major source of profit leakage
+### Tables are the largest subcategory-level loss area
 
-The Tables subcategory generated approximately:
+Tables generated:
 
-- **$208.02K sales**
-- **-$17.75K profit**
+- **$208.02K in sales**
+- **-$17.75K in profit**
 - **-8.53% margin**
 
-Other loss-making subcategories include Bookcases and Supplies.
+Bookcases and Supplies also recorded negative profit.
+
+This points to a more specific problem than simply saying Furniture is underperforming: **the business can drill down to the products and economics behind the losses.**
 
 ---
 
-### 4. High-revenue customers can still be unprofitable
+### Some high-revenue customers are not profitable
 
-For this analysis:
+For the customer analysis, I defined:
 
-- High-revenue customer = **at least $5,000 in sales**
-- Profitability risk = **profit margin below 10%**
+- **High revenue:** sales of at least $5,000
+- **Profitability risk:** profit margin below 10%
 
-The analysis identified **33 customers** meeting these criteria.
-
-Together, they generated approximately:
+This identified **33 customers** generating approximately:
 
 - **$254.25K in sales**
 - **-$20.74K in profit**
 
-A further subset of **17 high-revenue customers** generated negative profit margins.
+Within this group, **17 customers had negative profit margins**, representing approximately **$138.79K in sales and $26.36K in losses**.
+
+The analysis therefore looks at customer value in terms of both revenue and profitability.
 
 ---
 
-### 5. Higher discounts are associated with weaker profitability
-
-The analysis found weaker profitability at higher discount levels.
+### Higher discounts are associated with weaker profitability
 
 Transactions with discounts above 30% generated approximately:
 
-- **$91.8K sales**
-- **-$37.7K profit**
+- **$91.8K in sales**
+- **-$37.7K in profit**
 
-This represents a **theoretical break-even gap of approximately $37.7K**, not a forecast of recoverable profit.
+The analysis uses this as a **theoretical break-even gap**, rather than assuming that the entire amount could actually be recovered.
+
+The relationship between discounting and profitability is treated as an association, not proof of causation.
 
 ---
 
-### 6. Growth is driven by customer and order activity
+### Recent growth is driven more by customer and order activity
 
-Python analysis indicates that recent sales growth is primarily associated with:
+The Python analysis shows that recent sales growth is associated with:
 
 - More customers
 - More orders
@@ -115,29 +141,31 @@ Python analysis indicates that recent sales growth is primarily associated with:
 
 while average order value declined.
 
-This suggests that sales growth should be evaluated alongside the quality and economics of customer and order growth.
+This suggests that revenue growth should be evaluated alongside customer behavior and order economics rather than sales volume alone.
 
 ---
 
-### 7. Regional profitability varies
+### Regional performance also varies
 
-The West region recorded the highest regional margin at approximately **14.98%**, while Central recorded approximately **7.92%**.
+The West recorded the highest regional margin at approximately **14.98%**, while Central recorded approximately **7.92%**.
 
-State-level analysis also identified several loss-making markets requiring further investigation.
+The state-level analysis identified additional loss-making markets, including Texas, Ohio, Pennsylvania and Illinois.
+
+These areas require further investigation into the underlying product, pricing and discount mix.
 
 ---
 
-## Business Recommendations
+## Recommendations
 
-Based on the analysis:
+Based on the analysis, the main areas for management attention are:
 
-1. **Prioritize profitable growth** rather than revenue growth alone.
-2. **Review Furniture economics**, particularly Tables and other loss-making subcategories.
-3. **Investigate loss-making products** for pricing, discounting, and cost-related issues.
-4. **Review high-revenue, low-margin customer relationships** to understand their profitability drivers.
-5. **Tighten discount decisions**, particularly at higher discount levels.
-6. **Investigate regional and state-level loss patterns** before scaling sales further in those markets.
-7. Use Power BI to monitor growth, profitability, and emerging profit-leakage areas.
+1. **Protect profitable growth** rather than optimizing for revenue alone.
+2. **Review Furniture profitability**, particularly Tables and other loss-making subcategories.
+3. **Investigate loss-making products** to understand pricing, discounting and cost drivers.
+4. **Review high-revenue, low-margin customer relationships** before prioritizing them purely based on sales.
+5. **Reassess high-discount transactions** and understand where discounts are not translating into profitable sales.
+6. **Investigate loss-making states** at a more granular product and customer level.
+7. Use the Power BI dashboard to monitor these areas as performance changes.
 
 ---
 
@@ -145,7 +173,7 @@ Based on the analysis:
 
 ![Superstore Profitable Growth Dashboard](screenshots/dashboard.png)
 
-The Power BI dashboard provides an executive view of:
+The Power BI dashboard brings the main findings into one management view, including:
 
 - Sales and profit growth
 - Category profitability
